@@ -6,6 +6,10 @@
 
 ***
 
+# What can it be used for?
+You can use it to download the average price of a product from a given platform by pasting the link - the program will recognize the platform itself
+
+***
 # Used Librarie
 > - BeautifulSoup
 
