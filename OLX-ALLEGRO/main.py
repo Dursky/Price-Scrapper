@@ -4,12 +4,8 @@ import requests
 choose_platform = 0#Detect which one platform detect
 
 #Example link for platforms
-link = "https://www.ebay.pl/sch/15032/i.html?_from=R40&_nkw=iphone+12"
+link = "https://allegro.pl/kategoria/smartfony-i-telefony-komorkowe-165?string=iphone%2011%20pro&bmatch=baseline-product-cl-eyesa2-engag-dict45-ele-1-1-1203"
 
-if any(x in link for x in ["ebay"]):
-    print("------------------")
-    print("Ebay:")
-    choose_platform = 3
 if any(x in link for x in ["allegro"]):
     print("------------------")
     print("Allegro:")
@@ -19,11 +15,8 @@ if any(x in link for x in ["olx"]):
     print("Olx:")
     choose_platform = 1
 
-
 if(link ==""):
-    print("nothing in link save - OLX")
-    exit()
-
+    print("nothing in link save")
 s = requests.get(link)
 soup = BeautifulSoup(s.content, "lxml")
 
@@ -38,8 +31,7 @@ if(choose_platform == 1):
     rows = soup.find_all("p", attrs={'class':'price'})
 if(choose_platform == 2):
     rows = soup.find_all("span", attrs={'class':'_1svub _lf05o'})
-if(choose_platform ==3 ):
-    rows = soup.find_all("span", attrs={'class':'ITALIC'})
+
 for row in rows:          
     #Some parse function 
     st_1 = row.get_text()[:-2]
@@ -60,6 +52,5 @@ for row in rows:
         res = st_5.replace(",","")
         floats = float(res)
         list_price.append(floats)
-    print(row.get_text())
-#print(average(list_price))#Print a result with average price
+print(average(list_price))#Print a result with average price
 print("------------------")
