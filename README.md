@@ -18,7 +18,6 @@ You can use it to download the average price of a product from a given platform 
 ### List of platfrom to scrap
 >- Olx
 >- Allegro
->- Ebay [Not working yet]
 
 ***
 ### Installation
